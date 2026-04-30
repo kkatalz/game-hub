@@ -1,5 +1,6 @@
+import PlatformIconList from '@/components/PlatformIconList';
 import type { Game } from '@/hoos/useGames';
-import { CardBody, CardRoot, Heading, Image } from '@chakra-ui/react';
+import { Card, Heading, Image } from '@chakra-ui/react';
 
 interface GameCardProps {
   game: Game;
@@ -7,9 +8,9 @@ interface GameCardProps {
 
 const GameCard = ({ game }: GameCardProps) => {
   return (
-    <CardRoot borderRadius='5' overflow='hidden'>
+    <Card.Root borderRadius='5' overflow='hidden'>
       <Image src={game.background_image} alt={game.name} h='196px' />
-      <CardBody>
+      <Card.Body>
         <Heading
           fontSize='xl'
           h='30px'
@@ -19,8 +20,11 @@ const GameCard = ({ game }: GameCardProps) => {
         >
           {game.name}
         </Heading>
-      </CardBody>
-    </CardRoot>
+        <PlatformIconList
+          platforms={game.parent_platforms.map((pp) => pp.platform)}
+        />
+      </Card.Body>
+    </Card.Root>
   );
 };
 
