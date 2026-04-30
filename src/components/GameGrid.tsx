@@ -1,16 +1,25 @@
+import GameCard from '@/components/GameCard';
 import useGames from '@/hoos/useGames';
-import { List } from '@chakra-ui/react';
+import { SimpleGrid } from '@chakra-ui/react';
 
 const GameGrid = () => {
   const { games, error } = useGames();
 
   return (
-    <List.Root listStyle='disc' pl='40' pt='5'>
+    <>
       {error && <p>{error}</p>}
-      {games.map((game) => (
-        <List.Item key={game.id}>{game.name}</List.Item>
-      ))}
-    </List.Root>
+      <SimpleGrid
+        columns={{ sm: 1, md: 2, lg: 3 }}
+        listStyle='disc'
+        padding='10'
+        columnGap='10'
+        rowGap='8'
+      >
+        {games.map((game) => (
+          <GameCard key={game.id} game={game} />
+        ))}
+      </SimpleGrid>
+    </>
   );
 };
 
