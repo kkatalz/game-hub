@@ -15,7 +15,7 @@ const GameGrid = () => {
         columns={{ sm: 1, md: 2, lg: 3 }}
         listStyle='disc'
         padding='10'
-        columnGap='10'
+        columnGap='5'
         rowGap='8'
       >
         {isLoading &&
