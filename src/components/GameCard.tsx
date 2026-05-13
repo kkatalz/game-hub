@@ -1,4 +1,5 @@
 import CriticScore from '@/components/CriticScore';
+import Emoji from '@/components/Emoji';
 import PlatformIconList from '@/components/PlatformIconList';
 import type { Game } from '@/hooks/useGames';
 import getCroppedImageUrl from '@/services/image-url';
@@ -30,7 +31,7 @@ const GameCard = ({ game }: GameCardProps) => {
           textOverflow='ellipsis'
           whiteSpace='nowrap'
         >
-          {game.name}
+          {game.name} <Emoji rating={game.rating_top} />
         </Heading>
       </Card.Body>
     </Card.Root>
