@@ -1,4 +1,4 @@
-import useData from '@/hooks/useData';
+import platforms from '../components/data/platforms';
 
 interface Platform {
   id: number;
@@ -6,6 +6,7 @@ interface Platform {
   slug: string;
 }
 
-const usePlatforms = () => useData<Platform>('/platforms/lists/parents');
+// const usePlatforms = () => useData<Platform>('/platforms/lists/parents');  Do not call the API. Return dummy data instead.
+const usePlatforms = () => ({ data: platforms, error: null });
 
 export default usePlatforms;
