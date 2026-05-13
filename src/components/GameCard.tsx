@@ -17,6 +17,12 @@ const GameCard = ({ game }: GameCardProps) => {
         h='196px'
       />
       <Card.Body>
+        <HStack justifyContent='space-between' marginBottom={3}>
+          <PlatformIconList
+            platforms={game.parent_platforms.map((pp) => pp.platform)}
+          />
+          <CriticScore score={game.metacritic} />
+        </HStack>
         <Heading
           fontSize='xl'
           h='30px'
@@ -26,12 +32,6 @@ const GameCard = ({ game }: GameCardProps) => {
         >
           {game.name}
         </Heading>
-        <HStack justifyContent='space-between'>
-          <PlatformIconList
-            platforms={game.parent_platforms.map((pp) => pp.platform)}
-          />
-          <CriticScore score={game.metacritic} />
-        </HStack>
       </Card.Body>
     </Card.Root>
   );
