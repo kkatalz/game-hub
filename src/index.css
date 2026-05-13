@@ -16,6 +16,10 @@
   }
 }
 
+form {
+  width: 100%;
+}
+
 
 #root {
   width: 1126px;
