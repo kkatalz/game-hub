@@ -8,6 +8,7 @@ import type { Genre } from '@/hooks/useGenres';
 import type { Platform } from '@/hooks/useGames';
 import PlatformSelector from '@/components/PlatformSelector';
 import SortSelector from '@/components/SortSelector';
+import GameHeading from '@/components/GameHeading';
 
 export interface GameQuery {
   genre: Genre | null;
@@ -35,8 +36,9 @@ function App() {
           onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })}
         />
       </GridItem>
-      <GridItem area='selectors'>
-        <HStack marginBottom={5} paddingLeft={4}>
+      <GridItem area='selectors' paddingLeft={4}>
+        <GameHeading gameQuery={gameQuery} />
+        <HStack marginBottom={5}>
           <PlatformSelector
             onSelectPlatform={(platform) =>
               setGameQuery({ ...gameQuery, platform })
