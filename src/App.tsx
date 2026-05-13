@@ -23,8 +23,8 @@ function App() {
   return (
     <Grid
       templateAreas={{
-        base: `"nav" "selectors" "main"`,
-        lg: `"nav nav" "selectors selectors" "aside main"`,
+        base: `"nav" "main"`,
+        lg: `"nav nav" "aside main"`,
       }}
       templateColumns={{
         base: '1fr',
@@ -36,7 +36,13 @@ function App() {
           onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })}
         />
       </GridItem>
-      <GridItem area='selectors' paddingLeft={4}>
+      <GridItem area='aside' display={{ base: 'none', lg: 'block' }}>
+        <GenreList
+          onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+          selectedGenre={gameQuery.genre}
+        />
+      </GridItem>
+      <GridItem area='main' paddingLeft={4}>
         <GameHeading gameQuery={gameQuery} />
         <HStack marginBottom={5}>
           <PlatformSelector
@@ -52,14 +58,6 @@ function App() {
             sortOrder={gameQuery.sortOrder}
           />
         </HStack>
-      </GridItem>
-      <GridItem area='aside' display={{ base: 'none', lg: 'block' }}>
-        <GenreList
-          onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
-          selectedGenre={gameQuery.genre}
-        />
-      </GridItem>
-      <GridItem area='main'>
         <GameGrid gameQuery={gameQuery} />
       </GridItem>
     </Grid>
