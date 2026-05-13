@@ -6,7 +6,7 @@ const config = defineConfig({
       colors: {
         bg: {
           DEFAULT: {
-            value: { _light: '{colors.white}', _dark: '#12192a' },
+            value: { _light: '{colors.white}', _dark: '#1f222e' },
           },
         },
       },

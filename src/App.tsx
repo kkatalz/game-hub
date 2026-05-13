@@ -21,8 +21,8 @@ function App() {
   return (
     <Grid
       templateAreas={{
-        base: `"nav" "main"`,
-        lg: `"nav nav" "aside main"`,
+        base: `"nav" "selectors" "main"`,
+        lg: `"nav nav" "selectors selectors" "aside main"`,
       }}
       templateColumns={{
         base: '1fr',
@@ -32,14 +32,8 @@ function App() {
       <GridItem area='nav'>
         <NavBar />
       </GridItem>
-      <GridItem area='aside' display={{ base: 'none', lg: 'block' }}>
-        <GenreList
-          onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
-          selectedGenre={gameQuery.genre}
-        />
-      </GridItem>
-      <GridItem area='main'>
-        <HStack marginBottom={5}>
+      <GridItem area='selectors'>
+        <HStack marginBottom={5} paddingLeft={4} >
           <PlatformSelector
             onSelectPlatform={(platform) =>
               setGameQuery({ ...gameQuery, platform })
@@ -53,6 +47,14 @@ function App() {
             sortOrder={gameQuery.sortOrder}
           />
         </HStack>
+      </GridItem>
+      <GridItem area='aside' display={{ base: 'none', lg: 'block' }}>
+        <GenreList
+          onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+          selectedGenre={gameQuery.genre}
+        />
+      </GridItem>
+      <GridItem area='main'>
         <GameGrid gameQuery={gameQuery} />
       </GridItem>
     </Grid>
