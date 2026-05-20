@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import type { FetchResponse } from '@/hooks/useData';
+import type { FetchResponse } from '@/services/api-client';
 import apiClient from '@/services/api-client';
 import platforms from '@/components/data/platforms';
 
@@ -8,9 +8,6 @@ interface Platform {
   name: string;
   slug: string;
 }
-
-// const usePlatforms = () => useData<Platform>('/platforms/lists/parents');  Do not call the API. Return dummy data instead.
-// const usePlatforms = () => ({ data: platforms, error: null });
 
 const usePlatforms = () => {
   const fetchPlatforms = async () => {
