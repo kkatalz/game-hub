@@ -2,12 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import type { FetchResponse } from '@/services/api-client';
 import apiClient from '@/services/api-client';
 import platforms from '@/components/data/platforms';
-
-interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-}
+import type { Platform } from '@/hooks/useGames';
 
 const usePlatforms = () => {
   const fetchPlatforms = async () => {
