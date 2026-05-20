@@ -1,22 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
-import type { FetchResponse } from '@/services/api-client';
-import apiClient from '@/services/api-client';
 import platforms from '@/components/data/platforms';
 import type { Platform } from '@/hooks/useGames';
+import ApiClient from '@/services/api-client';
 
-const usePlatforms = () => {
-  const fetchPlatforms = async () => {
-    return await apiClient
-      .get<FetchResponse<Platform>>('/platforms/lists/parents')
-      .then((response) => response.data.results);
-  };
+const apiClient = new ApiClient<Platform>('/platforms/lists/parents');
 
-  return useQuery<Platform[], Error>({
+const usePlatforms = () =>
+  useQuery<Platform[], Error>({
     queryKey: ['platforms'],
-    queryFn: fetchPlatforms,
+    queryFn: () => apiClient.getAll().then((data) => data.results),
     staleTime: 24 * 60 * 60 * 1000, // 24 hours
     initialData: platforms,
   });
-};
 
 export default usePlatforms;
+//

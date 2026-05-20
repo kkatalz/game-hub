@@ -1,7 +1,8 @@
 import type { GameQuery } from '@/App';
-import { type FetchResponse } from '@/services/api-client';
-import apiClient from '@/services/api-client';
+import ApiClient from '@/services/api-client';
 import { useQuery } from '@tanstack/react-query';
+
+const apiClient = new ApiClient<Game>('/games');
 
 export interface Platform {
   id: number;
@@ -20,21 +21,19 @@ export interface Game {
 
 const useGames = (gameQuery: GameQuery) => {
   const fetchGames = async () => {
-    return await apiClient
-      .get<FetchResponse<Game>>('/games', {
-        params: {
-          genres: gameQuery.genre?.id,
-          parent_platforms: gameQuery.platform?.id,
-          ordering: gameQuery.sortOrder,
-          search: gameQuery.searchText,
-        },
-      })
-      .then((response) => response.data.results);
+    return await apiClient.getAll({
+      params: {
+        genres: gameQuery.genre?.id,
+        parent_platforms: gameQuery.platform?.id,
+        ordering: gameQuery.sortOrder,
+        search: gameQuery.searchText,
+      },
+    });
   };
 
   return useQuery<Game[], Error>({
     queryKey: ['games', gameQuery],
-    queryFn: fetchGames,
+    queryFn: () => fetchGames().then((data) => data.results),
     staleTime: 24 * 60 * 60 * 1000, // 24 hours
   });
 };
