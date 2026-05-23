@@ -1,14 +1,14 @@
 import { Grid, GridItem, HStack } from '@chakra-ui/react';
 import './App.css';
 import NavBar from '@/components/NavBar';
-import GameGrid from '@/components/GameGridInfiniteQuery.tsx';
 import GenreList from '@/components/GenreList';
 import { useState } from 'react';
 import type { Genre } from '@/hooks/useGenres';
-import type { Platform } from '@/hooks/useGamesInfiniteQuery';
+import type { Platform } from '@/hooks/useGames';
 import PlatformSelector from '@/components/PlatformSelector';
 import SortSelector from '@/components/SortSelector';
 import GameHeading from '@/components/GameHeading';
+import GameGridInfiniteScroll from '@/components/GameGridInfiniteScroll';
 
 export interface GameQuery {
   genre: Genre | null;
@@ -58,7 +58,7 @@ function App() {
             sortOrder={gameQuery.sortOrder}
           />
         </HStack>
-        <GameGrid gameQuery={gameQuery} />
+        <GameGridInfiniteScroll gameQuery={gameQuery} />
       </GridItem>
     </Grid>
   );

@@ -1,4 +1,4 @@
-import type { Platform } from '@/hooks/useGamesInfiniteQuery';
+import type { Platform } from '@/hooks/useGames';
 import { HStack, Icon } from '@chakra-ui/react';
 import {
   FaWindows,

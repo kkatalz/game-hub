@@ -2,7 +2,7 @@ import type { GameQuery } from '@/App';
 import GameCard from '@/components/GameCard';
 import GameCardContainer from '@/components/GameCardContainer';
 import GameCardSkeleton from '@/components/GameCardSkeleton';
-import useGames from '@/hooks/useGamesInfiniteQuery';
+import useGames from '@/hooks/useGames';
 import { Box, Button, SimpleGrid, Text } from '@chakra-ui/react';
 import React from 'react';
 
@@ -10,7 +10,7 @@ interface Props {
   gameQuery: GameQuery;
 }
 
-const GameGrid = ({ gameQuery }: Props) => {
+const GameGridInfiniteQuery = ({ gameQuery }: Props) => {
   const {
     data,
     error,
@@ -55,4 +55,4 @@ const GameGrid = ({ gameQuery }: Props) => {
   );
 };
 
-export default GameGrid;
+export default GameGridInfiniteQuery;
