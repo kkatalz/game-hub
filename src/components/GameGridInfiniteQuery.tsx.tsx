@@ -2,7 +2,7 @@ import type { GameQuery } from '@/App';
 import GameCard from '@/components/GameCard';
 import GameCardContainer from '@/components/GameCardContainer';
 import GameCardSkeleton from '@/components/GameCardSkeleton';
-import useGames from '@/hooks/useGames';
+import useGames from '@/hooks/useGamesInfiniteQuery';
 import { Box, Button, SimpleGrid, Text } from '@chakra-ui/react';
 import React from 'react';
 

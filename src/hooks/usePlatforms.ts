@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import platforms from '@/components/data/platforms';
-import type { Platform } from '@/hooks/useGames';
+import type { Platform } from '@/hooks/useGamesInfiniteQuery';
 import ApiClient from '@/services/api-client';
 
 const apiClient = new ApiClient<Platform>('/platforms/lists/parents');
