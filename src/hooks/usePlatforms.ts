@@ -14,4 +14,3 @@ const usePlatforms = () =>
   });
 
 export default usePlatforms;
-//
