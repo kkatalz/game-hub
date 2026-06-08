@@ -1,5 +1,5 @@
-import type { GameQuery } from '@/App';
 import ApiClient, { type FetchResponse } from '@/services/api-client';
+import useGameQueryStore, { type GameQuery } from '@/store';
 import {
   keepPreviousData,
   useInfiniteQuery,
@@ -24,7 +24,9 @@ export interface Game {
   rating_top: number;
 }
 
-const useGames = (gameQuery: GameQuery) => {
+const useGames = () => {
+  const gameQuery = useGameQueryStore((s) => s.gameQuery);
+
   const fetchOnePageOfGames = async ({ pageParam }: { pageParam: number }) => {
     return await apiClient.getAll({
       params: {
