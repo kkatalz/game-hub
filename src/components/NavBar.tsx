@@ -3,8 +3,6 @@ import logo from '../assets/logo.webp';
 import ColorModeSwitch from '@/components/ColorModeSwitch';
 import SearchInput from '@/components/SearchInput';
 
-
-
 const NavBar = () => {
   return (
     <HStack padding='10px' gap='1rem'>
@@ -16,4 +14,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-  
