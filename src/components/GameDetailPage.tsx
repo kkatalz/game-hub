@@ -1,4 +1,5 @@
 import ExpandableText from '@/components/ExpandableText';
+import GameAttributes from '@/components/GameAttributes';
 import useGame from '@/hooks/useGame';
 import { Heading } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
@@ -12,10 +13,11 @@ const GameDetailPage = () => {
     return <div>Error occurred while fetching game details.</div>;
 
   return (
-    <div>
+    <>
       <Heading>{game.name}</Heading>
       <ExpandableText text={game.description_raw} maxLength={200} />
-    </div>
+      <GameAttributes game={game} />
+    </>
   );
 };
 
