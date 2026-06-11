@@ -1,3 +1,4 @@
+import type { Trailer } from '@/entities/Trailer';
 import axios, { type AxiosRequestConfig } from 'axios';
 
 export interface FetchResponse<T> {
@@ -23,6 +24,12 @@ class ApiClient<T> {
   getAll = async (config?: AxiosRequestConfig): Promise<FetchResponse<T>> => {
     return await axiosInstance
       .get<FetchResponse<T>>(this.endpoint, config)
+      .then((response) => response.data);
+  };
+
+  getAllTrailers = async (id: string): Promise<FetchResponse<Trailer>> => {
+    return await axiosInstance
+      .get<FetchResponse<Trailer>>(`${this.endpoint}/${id}/movies`)
       .then((response) => response.data);
   };
 
