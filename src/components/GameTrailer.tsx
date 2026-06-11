@@ -6,8 +6,8 @@ const GameTrailer = () => {
   const { slug } = useParams();
   const { data, isLoading, error } = useTrailers(slug!);
 
-  const title = data?.results[0].name || 'Game Trailer';
-  const trailerSrc = data?.results[0].data['480'];
+  const title = data?.results[0]?.name || 'Game Trailer';
+  const trailerSrc = data?.results[0]?.data['480'];
 
   if (isLoading) return <div>Loading...</div>;
   if (error || !data || data.count === 0)
