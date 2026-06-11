@@ -1,4 +1,4 @@
-import type { Game } from '@/entities/Game';
+import type Game from '@/entities/Game';
 import ApiClient, { type FetchResponse } from '@/services/api-client';
 import useGameQueryStore, { type GameQuery } from '@/store';
 import {

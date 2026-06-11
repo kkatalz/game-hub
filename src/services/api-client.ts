@@ -1,4 +1,3 @@
-import type { Trailer } from '@/entities/Trailer';
 import axios, { type AxiosRequestConfig } from 'axios';
 
 export interface FetchResponse<T> {
