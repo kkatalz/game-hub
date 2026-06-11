@@ -3,7 +3,7 @@ import GameAttributes from '@/components/GameAttributes';
 import GameScreenshots from '@/components/GameScreenshots';
 import GameTrailer from '@/components/GameTrailer';
 import useGame from '@/hooks/useGame';
-import { Heading } from '@chakra-ui/react';
+import { Box, Heading, SimpleGrid } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 
 const GameDetailPage = () => {
@@ -15,13 +15,18 @@ const GameDetailPage = () => {
     return <div>Error occurred while fetching game details.</div>;
 
   return (
-    <>
+    <SimpleGrid columns={{ base: 1, md: 2 }} marginTop={4} gap={4}>
+      <Box>
       <Heading>{game.name}</Heading>
       <ExpandableText text={game.description_raw} maxLength={200} />
       <GameAttributes game={game} />
+      </Box>
+      <Box>
+
       <GameTrailer />
       <GameScreenshots />
-    </>
+      </Box>
+    </SimpleGrid>
   );
 };
 
