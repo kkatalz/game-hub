@@ -3,12 +3,12 @@ import { type Trailer } from '@/entities/Trailer';
 import { useQuery } from '@tanstack/react-query';
 import ms from 'ms';
 
-const apiClient = new ApiClient<Trailer>('games');
-
 const useTrailers = (id: string) => {
+  const apiClient = new ApiClient<Trailer>(`/games/${id}/movies`);
+
   return useQuery<FetchResponse<Trailer>, Error>({
     queryKey: ['trailer', id, 'movies'],
-    queryFn: () => apiClient.getAllTrailers(id),
+    queryFn: () => apiClient.getAll(),
     staleTime: ms('24h'),
   });
 };

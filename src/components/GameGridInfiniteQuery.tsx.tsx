@@ -1,4 +1,3 @@
-import type { GameQuery } from '@/App';
 import GameCard from '@/components/GameCard';
 import GameCardContainer from '@/components/GameCardContainer';
 import GameCardSkeleton from '@/components/GameCardSkeleton';
@@ -6,11 +5,7 @@ import useGames from '@/hooks/useGames';
 import { Box, Button, SimpleGrid, Text } from '@chakra-ui/react';
 import React from 'react';
 
-interface Props {
-  gameQuery: GameQuery;
-}
-
-const GameGridInfiniteQuery = ({ gameQuery }: Props) => {
+const GameGridInfiniteQuery = () => {
   const {
     data,
     error,
@@ -18,7 +13,7 @@ const GameGridInfiniteQuery = ({ gameQuery }: Props) => {
     isFetchingNextPage,
     fetchNextPage,
     hasNextPage,
-  } = useGames(gameQuery);
+  } = useGames();
   const skeletons = [1, 2, 3, 4, 5, 6];
 
   if (error) return <Text ml={2}>{error.message}</Text>;

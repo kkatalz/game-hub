@@ -27,12 +27,6 @@ class ApiClient<T> {
       .then((response) => response.data);
   };
 
-  getAllTrailers = async (id: string): Promise<FetchResponse<Trailer>> => {
-    return await axiosInstance
-      .get<FetchResponse<Trailer>>(`${this.endpoint}/${id}/movies`)
-      .then((response) => response.data);
-  };
-
   get = async (slug: string): Promise<T> => {
     return await axiosInstance
       .get<T>(`${this.endpoint}/${slug}`)
