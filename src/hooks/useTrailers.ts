@@ -1,5 +1,5 @@
+import type Trailer from '@/entities/Trailer';
 import ApiClient, { type FetchResponse } from '@/services/api-client';
-import { type Trailer } from '@/entities/Trailer';
 import { useQuery } from '@tanstack/react-query';
 import ms from 'ms';
 
